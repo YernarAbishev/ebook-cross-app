@@ -1,0 +1,23 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block title %}{{ ebook.title }}{% endblock %}
+
+{% block content %}
+    <div class="main-content">
+        <div class="container">
+            <div class="book-detail">
+                <p class="mt-2 mb-2"><a href="{% url 'homePage' %}" class="back"><i class="fa-solid fa-arrow-left"></i> Назад</a></p>
+                <h3 class="title">{{ ebook.title }}</h3>
+                <h5>Жанр: {{ ebook.genre }}</h5>
+                <div class="image-cover">
+                    <img src="{{ ebook.imageCover.url }}" alt="{{ ebook.title }}">
+                </div>
+                <p class="description"><b>Описание:</b> {{ ebook.description }}</p>
+                <h3 class="title">Слушать</h3>
+                <div class="ready-player-1">
+                    <audio src="{{ ebook.audioFile.url }}" controls></audio>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

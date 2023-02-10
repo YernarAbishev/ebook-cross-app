@@ -1,0 +1,23 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block title %}Поиск{% endblock %}
+
+{% block content %}
+    <div class="main-content">
+        <div class="container">
+            <div class="all-books">
+                <h3 class="title">Поиск</h3>
+                <form class="form-inline my-2 my-lg-0" action="{% url 'searchResults' %}">
+                    <div class="row">
+                        <div class="col-9">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Название книги" aria-label="Search" name="search">
+                        </div>
+                        <div class="col-3">
+                            <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static './css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static './css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static './css/style.css' %}">
+    <link rel="stylesheet" href="{% static './css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">ebook</a>
+        </div>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+    <div class="fixed-bottom-menu">
+        <div class="row">
+            <div class="col-3">
+                <a href="{% url 'homePage' %}" class="bottom-menu-item">
+                    <i class="fa-solid fa-house-chimney"></i>
+                    <p>Главная</p>
+                </a>
+            </div>
+            <div class="col-3">
+                <a href="{% url 'allBooks' %}" class="bottom-menu-item">
+                    <i class="fa-solid fa-book"></i>
+                    <p>Все книги</p>
+                </a>
+            </div>
+            <div class="col-3">
+                <a href="{% url 'allGenres' %}" class="bottom-menu-item">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                    <p>Жанры</p>
+                </a>
+            </div>
+            <div class="col-3">
+                <a href="{% url 'searchBook' %}" class="bottom-menu-item">
+                    <i class="fa-solid fa-search"></i>
+                    <p>Поиск</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static './js/jquery.min.js' %}"></script>
+    <script src="{% static './js/owl.carousel.min.js' %}"></script>
+    <script src="{% static './js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static './js/carousel.js' %}"></script>
+    <script src="{% static './js/preloader.js' %}"></script>
+</body>
+</html>

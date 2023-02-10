@@ -1,0 +1,38 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block title %}Результаты поиска{% endblock %}
+
+{% block content %}
+    <div class="main-content">
+        <div class="container">
+            <div class="all-books">
+                <h3 class="title">Результаты поиска</h3>
+                <div class="row">
+                    {% if ebooks %}
+                    {% for ebook in ebooks %}
+                    <div class="col-6">
+                        <div class="new-book-card">
+                            <div class="image-cover">
+                                <img src="{{ ebook.imageCover.url }}" alt="{{ ebook.title }}">
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="new-book-data">
+                                        {{ ebook.author|truncatechars:10 }}<br>{{ ebook.title|truncatechars:10 }}
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <a href="{% url 'bookDetail' pk=ebook.pk %}" class="play-btn"><img src="{% static './img/play-button.svg' %}" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <h1>По вашему запросу ничего не найдено</h1>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

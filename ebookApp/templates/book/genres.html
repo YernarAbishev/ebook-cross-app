@@ -1,0 +1,20 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block title %}Все книги{% endblock %}
+
+{% block content %}
+    <div class="main-content">
+        <div class="container">
+            <div class="all-books">
+                <h3 class="title">Жанры</h3>
+                <div class="row">
+                    {% for genre in genres %}
+                    <div class="col-6">
+                        <a href="{% url 'genreDetails' slug=genre.slug %}" class="genre-button">{{ genre.genreName }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

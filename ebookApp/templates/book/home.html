@@ -1,0 +1,86 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+    <div class="main-content">
+        <div class="container">
+            <div class="news">
+                <h3 class="title">Новинки 🆕</h3>
+                <div class="row">
+                    {% for ebook in ebooks %}
+                    <div class="col-6">
+                        <div class="new-book-card">
+                            <div class="image-cover">
+                                <img src="{{ ebook.imageCover.url }}" alt="{{ ebook.title }}">
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="new-book-data">
+                                        {{ ebook.author|truncatechars:10 }}<br>{{ ebook.title|truncatechars:10 }}
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <a href="{% url 'bookDetail' pk=ebook.pk %}" class="play-btn"><img src="{% static './img/play-button.svg' %}" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="chart">
+                <h3 class="title">Чарт 🔝</h3>
+                <div class="row">
+                    {% for ebook in ebooks %}
+                    {% if ebook.isChart %}
+                    <div class="col-6">
+                        <div class="new-book-card">
+                            <div class="image-cover">
+                                <img src="{{ ebook.imageCover.url }}" alt="{{ ebook.title }}">
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="new-book-data">
+                                        {{ ebook.author|truncatechars:10 }}<br>{{ ebook.title|truncatechars:10 }}
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <a href="{% url 'bookDetail' pk=ebook.pk %}" class="play-btn"><img src="{% static './img/play-button.svg' %}" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="recomended">
+                <h3 class="title">Рекомендуем 👍</h3>
+                <div class="row">
+                    {% for ebook in ebooks %}
+                    {% if ebook.isRecommended %}
+                    <div class="col-6">
+                        <div class="new-book-card">
+                            <div class="image-cover">
+                                <img src="{{ ebook.imageCover.url }}" alt="{{ ebook.title }}">
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="new-book-data">
+                                        {{ ebook.author|truncatechars:10 }}<br>{{ ebook.title|truncatechars:10 }}
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <a href="{% url 'bookDetail' pk=ebook.pk %}" class="play-btn"><img src="{% static './img/play-button.svg' %}" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
